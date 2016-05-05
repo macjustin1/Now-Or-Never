@@ -44,5 +44,6 @@ class profileViewController: UIViewController {
         if(overlayImageView?.image == likeOverlay) {
             overlayImageView?.hidden = true
         }
+        //if (personA likes personB) remove Person from crush list //accidentally liked them
     }
 }
