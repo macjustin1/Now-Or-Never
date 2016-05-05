@@ -18,11 +18,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var profileBios = [String]()
     //populate with test images
     
+    var profiles = [Person]()
+    var currentProfile = Person()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         populateImageArray()
-        navigationController!.navigationBar.barTintColor = UIColor(colorLiteralRed: 87/255, green: 143/255, blue: 234/255, alpha: 0.1)
+        navigationController!.navigationBar.barTintColor = UIColor(colorLiteralRed: 87/255, green: 143/255, blue: 234/255, alpha: 0.1) //changes the navigation bar color to light blue, divide by 255 to convert RGB
         //Status Bar White Font
         navigationController?.navigationBar.barStyle = UIBarStyle.Black
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -35,6 +38,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             profileNames.append("Justin")
             profileBios.append("Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.")
         }
+    }
+    
+    func populateProfiles() -> Void {
+        //populate Profile name, images, bios, age
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize { //corrects auto layout, using 2 rows
