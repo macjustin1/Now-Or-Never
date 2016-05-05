@@ -12,10 +12,12 @@ class profileViewController: UIViewController {
     @IBOutlet weak var imageView = UIImageView()
     @IBOutlet weak var nameLabel = UILabel()
     @IBOutlet weak var bioView = UITextView()
+    @IBOutlet weak var overlayImageView = UIImageView()
     
     var image = UIImage()
     var name = String()
     var bio = String()
+    let likeOverlay = UIImage(named: "like button")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +25,24 @@ class profileViewController: UIViewController {
         self.imageView?.image = self.image
         self.nameLabel?.text = self.name
         self.bioView?.text = self.bio
+        //overlayImageView?.hidden = true
+        //if(personA likes personB) { overlayImageView?.image = likeOverlay }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    @IBAction func likeButtonPressed(sender: AnyObject) {
+        print("like Button pressed")
+        //stamp like, hide buttons
+        overlayImageView?.hidden = false
+        overlayImageView?.image = likeOverlay
+        //add Person to crush list
+    }
+    @IBAction func dislikeButtonPressed(sender: AnyObject) {
+        print("Dislike button pressed")
+        if(overlayImageView?.image == likeOverlay) {
+            overlayImageView?.hidden = true
+        }
     }
 }
