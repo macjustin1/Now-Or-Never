@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Dtk-2Y-mGf">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -256,11 +257,12 @@
                         <outlet property="bioView" destination="yNh-3l-alu" id="q0m-VS-EWX"/>
                         <outlet property="imageView" destination="T6F-oO-b3m" id="DZa-JT-0C6"/>
                         <outlet property="nameLabel" destination="PBN-zl-HjS" id="uHE-Kk-dSf"/>
+                        <segue destination="Dtk-2Y-mGf" kind="modal" identifier="showLoginController" id="M51-u0-Kox"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i9m-5d-IpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454" y="1130"/>
+            <point key="canvasLocation" x="370" y="1482"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="2hk-qP-vU7">
@@ -273,21 +275,43 @@
                     <view key="view" contentMode="scaleToFill" id="1hj-Ee-dHV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="holding hands" translatesAutoresizingMaskIntoConstraints="NO" id="V8d-Or-h22">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now Or Never" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rr-Zl-8H4">
+                                <rect key="frame" x="53" y="60" width="215" height="39"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V8d-Or-h22" firstAttribute="centerX" secondItem="9Rr-Zl-8H4" secondAttribute="centerX" id="JsI-0G-sQE"/>
+                            <constraint firstAttribute="trailing" secondItem="V8d-Or-h22" secondAttribute="trailing" id="SG7-0k-DvS"/>
+                            <constraint firstItem="V8d-Or-h22" firstAttribute="bottom" secondItem="XIG-wZ-dmh" secondAttribute="top" id="YeK-JQ-7gw"/>
+                            <constraint firstItem="9Rr-Zl-8H4" firstAttribute="top" secondItem="Yrd-6o-aWS" secondAttribute="bottom" constant="40" id="dWs-wd-Ege"/>
+                            <constraint firstItem="V8d-Or-h22" firstAttribute="top" secondItem="1hj-Ee-dHV" secondAttribute="top" id="eSk-TJ-h80"/>
+                            <constraint firstItem="XIG-wZ-dmh" firstAttribute="top" secondItem="9Rr-Zl-8H4" secondAttribute="bottom" constant="469" id="n1D-I1-ytR"/>
+                            <constraint firstItem="V8d-Or-h22" firstAttribute="leading" secondItem="1hj-Ee-dHV" secondAttribute="leading" id="pBM-h5-L7p"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <segue destination="dsn-rd-moG" kind="modal" identifier="showTabController" id="GvP-m8-spz"/>
+                        <outlet property="backgroundImage" destination="V8d-Or-h22" id="XiQ-bI-sL0"/>
+                        <segue destination="dsn-rd-moG" kind="modal" identifier="showTabController" id="J65-Iw-D8Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8t-Pb-3a6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-552" y="702"/>
+            <point key="canvasLocation" x="-684" y="694"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Je4-mm-qtL">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="dsn-rd-moG" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="lfc-1U-wTo"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="g43-g3-c4j">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -306,6 +330,7 @@
         <image name="Oval 2 + Rectangle 10" width="120" height="120"/>
         <image name="Oval 3 + Rectangle 11" width="120" height="120"/>
         <image name="edit_user-25" width="25" height="25"/>
+        <image name="holding hands" width="2122" height="1194"/>
         <image name="home-50" width="25" height="25"/>
     </resources>
 </document>

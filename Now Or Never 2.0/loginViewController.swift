@@ -11,20 +11,33 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class loginViewController : UIViewController, FBSDKLoginButtonDelegate {
+    
+    @IBOutlet weak var backgroundImage: UIImageView!
+    let loginButton = FBSDKLoginButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (FBSDKAccessToken.currentAccessToken() == nil) {
-            print ("Not logged in")
-        }
-        else {
-            print("Logged in")
-            self.loadViewController()
-        }
-        let loginButton = FBSDKLoginButton()
+        //super.viewDidAppear(true)
+        
+        self.loginButton.delegate = self
+        
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        loginButton.center = self.view.center
+        loginButton.center = CGPointMake(self.view.bounds.width/2, self.view.bounds.height-50)
         loginButton.delegate = self
         self.view.addSubview(loginButton)
+        
+    }
+
+    
+    override func viewDidAppear(animated: Bool) {
+        if (FBSDKAccessToken.currentAccessToken() != nil) { //if the person is logged in, present the view controller
+            print("Logged in")
+            
+            self.loadViewController()
+        }
+        else {
+            print("Not Logged in")
+        }
     }
     
     
