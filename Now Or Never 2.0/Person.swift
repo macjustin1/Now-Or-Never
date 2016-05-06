@@ -12,6 +12,8 @@ class Person {
     
     var name = String()
     var bio = String()
+    var email = String()
+    var gender = String()
     var id = Int() //unique identifier for every person
     var age = Int()
     var crushes = [Person]() //stores who the person likes in this array
@@ -25,7 +27,7 @@ class Person {
     
     init() {
         name = "No name"
-        id = -1;
+        id = -1
         age = 100
         bio = "Empty Bio"
     }
