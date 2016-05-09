@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D17320991CDD48E700914218 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17320981CDD48E700914218 /* CloudKit.framework */; };
 		D1B4207C1CD571E600EDF6A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B4207B1CD571E600EDF6A0 /* AppDelegate.swift */; };
 		D1B4207E1CD571E600EDF6A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B4207D1CD571E600EDF6A0 /* ViewController.swift */; };
 		D1B420831CD571E600EDF6A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1B420821CD571E600EDF6A0 /* Assets.xcassets */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D17320971CDD48D300914218 /* Now Or Never.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Now Or Never.entitlements"; sourceTree = "<group>"; };
+		D17320981CDD48E700914218 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D1B420781CD571E600EDF6A0 /* Now Or Never.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Now Or Never.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B4207B1CD571E600EDF6A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1B4207D1CD571E600EDF6A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1C8FDE71CDBE4EE006D7D60 /* FBSDKLoginKit.framework in Frameworks */,
+				D17320991CDD48E700914218 /* CloudKit.framework in Frameworks */,
 				D1C8FDE61CDBE4EE006D7D60 /* FBSDKCoreKit.framework in Frameworks */,
 				D1C8FDE81CDBE4EE006D7D60 /* FBSDKShareKit.framework in Frameworks */,
 			);
@@ -96,6 +100,8 @@
 		D1B4206F1CD571E600EDF6A0 = {
 			isa = PBXGroup;
 			children = (
+				D17320981CDD48E700914218 /* CloudKit.framework */,
+				D17320971CDD48D300914218 /* Now Or Never.entitlements */,
 				D1C8FDE31CDBE4EE006D7D60 /* FBSDKCoreKit.framework */,
 				D1C8FDE41CDBE4EE006D7D60 /* FBSDKLoginKit.framework */,
 				D1C8FDE51CDBE4EE006D7D60 /* FBSDKShareKit.framework */,
@@ -220,7 +226,15 @@
 				TargetAttributes = {
 					D1B420771CD571E600EDF6A0 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = D27NEHPLYS;
+						DevelopmentTeam = 8HT4SNWT5N;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					D1B4208B1CD571E600EDF6A0 = {
 						CreatedOnToolsVersion = 7.3;
@@ -435,13 +449,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Now Or Never.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Now Or Never 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "justinmac.Now-Or-Never-2-0";
+				PRODUCT_BUNDLE_IDENTIFIER = "justinmac.Now-Or-Never";
 				PRODUCT_NAME = "Now Or Never";
 			};
 			name = Debug;
@@ -450,13 +466,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Now Or Never.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Now Or Never 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "justinmac.Now-Or-Never-2-0";
+				PRODUCT_BUNDLE_IDENTIFIER = "justinmac.Now-Or-Never";
 				PRODUCT_NAME = "Now Or Never";
 			};
 			name = Release;
