@@ -37,7 +37,7 @@ class loginViewController : UIViewController, FBSDKLoginButtonDelegate {
             //print("ID is: \(self.getID())")
             //print("Email is: \(self.getEmail())")
             self.getFirstName()
-            self.getEmail()
+            //self.getEmail()
             self.loadViewController()
         }
         else {
@@ -45,7 +45,7 @@ class loginViewController : UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    func getEmail() -> String {
+    /*func getEmail() -> String {
         let parameters = ["fields": "full_name, last_name, email"]
         var email : String = ""
         FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler {
@@ -61,10 +61,10 @@ class loginViewController : UIViewController, FBSDKLoginButtonDelegate {
             //print(result)
         }
         return email
-    }
+    }*/
     
     
-    func getFirstName() -> String { //returns the name of the current logged profile
+    func getFirstName() -> String { //return\s the name of the current logged profile
         let parameters = ["fields": "first_name, last_name"]
         var name : String = ""
         FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler {
@@ -73,9 +73,9 @@ class loginViewController : UIViewController, FBSDKLoginButtonDelegate {
                 print(error)
             }
             
-            if let firstName = result["first_name"] as? String {
-                //print("First name is \(firstName)")
-                name = firstName
+            if let firstName = result["first_name"] as? [String:AnyObject] {
+                print("First name is \(firstName)")
+                name = firstName["name"] as! String
             }
         }
         //print("Full name is: \(name)")

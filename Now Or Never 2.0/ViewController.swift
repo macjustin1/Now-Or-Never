@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import CloudKit
 
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var profileNames = ["Justin", "Ashley", "Amber", "Jennifer", "Ethan", "Michael", "David", "Kristin", "Brandon", "Katie"] //populate test names
+    
+    
+    var profileNames = ["Justin", "Ashley", "Amber", "Jennifer", "Ethan", "Brandon", "David", "Kristin", "Michael", "Katie"] //populate test names
     
     var profileImages = [UIImage]()
     var profileBios = [String]()
@@ -25,13 +28,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // Do any additional setup after loading the view, typically from a nib.
         populateImageArray()
         navigationController!.navigationBar.barTintColor = UIColor(colorLiteralRed: 87/255, green: 143/255, blue: 234/255, alpha: 0.1) //changes the navigation bar color to light blue, divide by 255 to convert RGB
         //Status Bar White Font
         navigationController?.navigationBar.barStyle = UIBarStyle.Black
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         
     }
     
@@ -45,7 +48,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func populateProfiles() -> Void {
+    func loadProfiles() -> Void {
         //populate Profile name, images, bios, age
     }
     
