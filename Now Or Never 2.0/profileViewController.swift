@@ -21,7 +21,7 @@ class profileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //
+        
         self.imageView?.image = self.image
         self.nameLabel?.text = self.name
         self.bioView?.text = self.bio
