@@ -3,19 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D17320991CDD48E700914218 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17320981CDD48E700914218 /* CloudKit.framework */; };
 		D1B4207C1CD571E600EDF6A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B4207B1CD571E600EDF6A0 /* AppDelegate.swift */; };
 		D1B4207E1CD571E600EDF6A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B4207D1CD571E600EDF6A0 /* ViewController.swift */; };
-		D1B420811CD571E600EDF6A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1B4207F1CD571E600EDF6A0 /* Main.storyboard */; };
 		D1B420831CD571E600EDF6A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1B420821CD571E600EDF6A0 /* Assets.xcassets */; };
 		D1B420861CD571E600EDF6A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1B420841CD571E600EDF6A0 /* LaunchScreen.storyboard */; };
 		D1B420911CD571E600EDF6A0 /* Now_Or_Never_2_0Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B420901CD571E600EDF6A0 /* Now_Or_Never_2_0Tests.swift */; };
 		D1B4209C1CD571E600EDF6A0 /* Now_Or_Never_2_0UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B4209B1CD571E600EDF6A0 /* Now_Or_Never_2_0UITests.swift */; };
 		D1B420AC1CD573A400EDF6A0 /* profileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B420AB1CD573A400EDF6A0 /* profileImageCell.swift */; };
 		D1B420B01CD5745500EDF6A0 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B420AF1CD5745500EDF6A0 /* profileViewController.swift */; };
+		D1C8FDE61CDBE4EE006D7D60 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C8FDE31CDBE4EE006D7D60 /* FBSDKCoreKit.framework */; };
+		D1C8FDE71CDBE4EE006D7D60 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C8FDE41CDBE4EE006D7D60 /* FBSDKLoginKit.framework */; };
+		D1C8FDE81CDBE4EE006D7D60 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C8FDE51CDBE4EE006D7D60 /* FBSDKShareKit.framework */; };
+		D1C8FDEA1CDBF016006D7D60 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C8FDE91CDBF016006D7D60 /* loginViewController.swift */; };
+		D1C8FDED1CDBFBDE006D7D60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1C8FDEB1CDBFBDE006D7D60 /* Main.storyboard */; };
 		D1E994ED1CDAA1B0002FBF9D /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E994EC1CDAA1B0002FBF9D /* MyProfileView.swift */; };
 		D1F59B841CDAE1FB00D890E0 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F59B831CDAE1FB00D890E0 /* Person.swift */; };
 /* End PBXBuildFile section */
@@ -42,7 +47,6 @@
 		D1B420781CD571E600EDF6A0 /* Now Or Never.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Now Or Never.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B4207B1CD571E600EDF6A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1B4207D1CD571E600EDF6A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D1B420801CD571E600EDF6A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1B420821CD571E600EDF6A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1B420851CD571E600EDF6A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1B420871CD571E600EDF6A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +58,11 @@
 		D1B4209D1CD571E600EDF6A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1B420AB1CD573A400EDF6A0 /* profileImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileImageCell.swift; sourceTree = "<group>"; };
 		D1B420AF1CD5745500EDF6A0 /* profileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
+		D1C8FDE31CDBE4EE006D7D60 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		D1C8FDE41CDBE4EE006D7D60 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		D1C8FDE51CDBE4EE006D7D60 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		D1C8FDE91CDBF016006D7D60 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		D1C8FDEC1CDBFBDE006D7D60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Now Or Never 2.0/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		D1E994EC1CDAA1B0002FBF9D /* MyProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		D1F59B831CDAE1FB00D890E0 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +72,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1C8FDE71CDBE4EE006D7D60 /* FBSDKLoginKit.framework in Frameworks */,
+				D17320991CDD48E700914218 /* CloudKit.framework in Frameworks */,
+				D1C8FDE61CDBE4EE006D7D60 /* FBSDKCoreKit.framework in Frameworks */,
+				D1C8FDE81CDBE4EE006D7D60 /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,14 +122,15 @@
 			children = (
 				D1B4207B1CD571E600EDF6A0 /* AppDelegate.swift */,
 				D1B4207D1CD571E600EDF6A0 /* ViewController.swift */,
-				D1B4207F1CD571E600EDF6A0 /* Main.storyboard */,
 				D1B420821CD571E600EDF6A0 /* Assets.xcassets */,
+				D1C8FDEB1CDBFBDE006D7D60 /* Main.storyboard */,
 				D1B420841CD571E600EDF6A0 /* LaunchScreen.storyboard */,
 				D1B420871CD571E600EDF6A0 /* Info.plist */,
 				D1B420AB1CD573A400EDF6A0 /* profileImageCell.swift */,
 				D1B420AF1CD5745500EDF6A0 /* profileViewController.swift */,
 				D1E994EC1CDAA1B0002FBF9D /* MyProfileView.swift */,
 				D1F59B831CDAE1FB00D890E0 /* Person.swift */,
+				D1C8FDE91CDBF016006D7D60 /* loginViewController.swift */,
 			);
 			path = "Now Or Never 2.0";
 			sourceTree = "<group>";
@@ -227,7 +241,7 @@
 				};
 			};
 			buildConfigurationList = D1B420731CD571E600EDF6A0 /* Build configuration list for PBXProject "Now Or Never" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -251,9 +265,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1C8FDED1CDBFBDE006D7D60 /* Main.storyboard in Resources */,
 				D1B420861CD571E600EDF6A0 /* LaunchScreen.storyboard in Resources */,
 				D1B420831CD571E600EDF6A0 /* Assets.xcassets in Resources */,
-				D1B420811CD571E600EDF6A0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1C8FDEA1CDBF016006D7D60 /* loginViewController.swift in Sources */,
 				D1F59B841CDAE1FB00D890E0 /* Person.swift in Sources */,
 				D1E994ED1CDAA1B0002FBF9D /* MyProfileView.swift in Sources */,
 				D1B420AC1CD573A400EDF6A0 /* profileImageCell.swift in Sources */,
@@ -319,20 +334,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D1B4207F1CD571E600EDF6A0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D1B420801CD571E600EDF6A0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D1B420841CD571E600EDF6A0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D1B420851CD571E600EDF6A0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D1C8FDEB1CDBFBDE006D7D60 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D1C8FDEC1CDBFBDE006D7D60 /* Base */,
+			);
+			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -429,7 +445,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Now Or Never 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "justinmac.Now-Or-Never-2-0";
+				PRODUCT_BUNDLE_IDENTIFIER = "justinmac.Now-Or-Never";
 				PRODUCT_NAME = "Now Or Never";
 			};
 			name = Debug;
@@ -442,7 +458,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Now Or Never 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "justinmac.Now-Or-Never-2-0";
+				PRODUCT_BUNDLE_IDENTIFIER = "justinmac.Now-Or-Never";
 				PRODUCT_NAME = "Now Or Never";
 			};
 			name = Release;

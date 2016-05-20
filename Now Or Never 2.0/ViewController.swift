@@ -7,41 +7,57 @@
 //
 
 import UIKit
+import CloudKit
+
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    var refresh : UIRefreshControl!
     
-    var profileNames = ["Justin", "Ashley", "Amber", "Jennifer", "Ethan", "Michael", "David", "Kristin", "Brandon", "Katie"] //populate test names
     
-    var profileImages = [UIImage]()
-    var profileBios = [String]()
-    //populate with test images
-    
-    var profiles = [Person]()
+    //var profiles = [Person]()
+    var profileRecords = [CKRecord]()
     var currentProfile = Person()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        populateImageArray()
+        
+        
+        refresh = UIRefreshControl()
+        refresh.attributedTitle = NSAttributedString(string: "Pull to load profiles")
+        refresh.addTarget(self, action: "loadProfiles", forControlEvents: .ValueChanged)
+        self.collectionView.addSubview(refresh) //adds a refresh action to the collectionView so we can update profiles
+        
+        
         navigationController!.navigationBar.barTintColor = UIColor(colorLiteralRed: 87/255, green: 143/255, blue: 234/255, alpha: 0.1) //changes the navigation bar color to light blue, divide by 255 to convert RGB
         //Status Bar White Font
         navigationController?.navigationBar.barStyle = UIBarStyle.Black
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
+        loadProfiles()
+        
     }
     
-    func populateImageArray() -> Void {
-        for i  in 1 ... 20 {
-            profileImages.append(UIImage(named: "a\(i)")!)
-            profileNames.append("Justin")
-            profileBios.append("Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.")
-        }
-    }
-    
-    func populateProfiles() -> Void {
+    func loadProfiles() -> Void {
         //populate Profile name, images, bios, age
+        profileRecords = [CKRecord]()
+        let publicData = CKContainer.defaultContainer().publicCloudDatabase
+        let query = CKQuery(recordType: "Person", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
+        //sort query here later
+        publicData.performQuery(query, inZoneWithID: nil, completionHandler: { (results:[CKRecord]?, error: NSError?) -> Void in //perform a database query to cloud kit to load
+            if let profiles = results {
+                self.profileRecords = profiles
+                dispatch_async(dispatch_get_main_queue(), { //push the current info into the main thread
+                    self.collectionView.reloadData()
+                    //self.refresh.endRefreshing()
+                })
+            }
+            else {
+                print("error in populating profiles")
+                print(error)
+            }
+        })
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize { //corrects auto layout, using 2 rows
@@ -54,15 +70,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { //required function for UICollectionView
-         return profileImages.count
+         return profileRecords.count
     }
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! profileImageCell //searches for identifier labeled "cell" from storyboard
-        cell.imageView?.image = self.profileImages[indexPath.row] //populate the imageViews from the collectionView cells with the profileImages array
-        cell.nameLabel?.text = self.profileNames[indexPath.row] //automatically increments the indexPath like ++i
-        
+        let profile = profileRecords[indexPath.row]
+        if let profileName = profile["Name"] as? String {
+            cell.nameLabel?.text = profileName //automatically increments the indexPath like ++i
+        }
+        if let profileImage = profile["Image"] as? CKAsset,
+            data = NSData(contentsOfURL: profileImage.fileURL),
+            image = UIImage(data: data) { //cannot directly convert Asset to UIImage
+            cell.imageView?.image = image//populate the imageViews from the collectionView cells with the profileImages in database
+        }
         return cell
     } //reuses cell for all cells in UICollectionView
     
@@ -82,10 +104,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let vc = segue.destinationViewController as! profileViewController
             
             //set the profile view up
-            print(profileNames[indexPath.row])
-            vc.image = self.profileImages[indexPath.row]
-            vc.name = self.profileNames[indexPath.row]
-            vc.bio = self.profileBios[indexPath.row]
+            let profile = profileRecords[indexPath.row]
+            if let profileImage = profile["Image"] as? CKAsset, //find the profile Image for the profileView
+                data = NSData(contentsOfURL: profileImage.fileURL),
+                image = UIImage(data: data) { //cannot directly convert Asset to UIImage
+                vc.image = image
+            }
+            if let profileName = profile["Name"] as? String {
+                vc.name = profileName
+            }
+            if let profileBio = profile["Bio"] as? String {
+                vc.bio = profileBio
+            }
+            //print(profileNames[indexPath.row])
             //vc.title = self.profileNames[indexPath.row]
         }
     }
