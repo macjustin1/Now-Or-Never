@@ -39,7 +39,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    func loadProfiles() -> Void {
+    func loadProfiles() -> Void { //parameter: index
         //populate Profile name, images, bios, age
         profileRecords = [CKRecord]()
         let publicData = CKContainer.defaultContainer().publicCloudDatabase
@@ -47,7 +47,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //sort query here later
         publicData.performQuery(query, inZoneWithID: nil, completionHandler: { (results:[CKRecord]?, error: NSError?) -> Void in //perform a database query to cloud kit to load
             if let profiles = results {
-                self.profileRecords = profiles
+                self.profileRecords = profiles //load them one at a time
                 dispatch_async(dispatch_get_main_queue(), { //push the current info into the main thread
                     self.collectionView.reloadData()
                     //self.refresh.endRefreshing()
@@ -57,6 +57,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 print("error in populating profiles")
                 print(error)
             }
+        })
+        var name: String = "Default"
+        var email: String = "Default"
+        var ID : String = ""
+        loginViewController().getFullName({
+            (result)->Void in
+            name = result
+            print("Name is: \(name)")
+        })
+        loginViewController().getEmail({
+            (result)->Void in
+            email = result
+            print("Email is: \(email)")
+        })
+        loginViewController().getFacebookID({
+            (result)->Void in
+            ID = result
+            print("ID is: \(ID)")
         })
     }
     
@@ -70,7 +88,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { //required function for UICollectionView
-         return profileRecords.count
+         return profileRecords.count //limit a specific profile amount
     }
     
     

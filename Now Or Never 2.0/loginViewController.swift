@@ -22,7 +22,7 @@ class loginViewController : UIViewController, FBSDKLoginButtonDelegate {
         self.loginButton.delegate = self
         
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        loginButton.frame = CGRect(x: self.view.bounds.width/4, y: self.view.bounds.height-80, width: 200, height: 50)
+        loginButton.frame = CGRect(x: self.view.bounds.width/4, y: self.view.bounds.height-120, width: 200, height: 50)
         //loginButton.center = CGPointMake(self.view.bounds.width/2, self.view.bounds.height-50)
         //loginButton.delegate = self
         self.view.addSubview(loginButton)
@@ -33,10 +33,10 @@ class loginViewController : UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidAppear(animated: Bool) {
         if (FBSDKAccessToken.currentAccessToken() != nil) { //if the person is logged in, present the view controller
             print("Logged in")
-            //print("Name is: \(self.getFirstName())")
             //print("ID is: \(self.getID())")
             //print("Email is: \(self.getEmail())")
-            self.getFirstName()
+            //self.getFirstName()
+            
             //self.getEmail()
             self.loadViewController()
         }
@@ -45,41 +45,48 @@ class loginViewController : UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    /*func getEmail() -> String {
-        let parameters = ["fields": "full_name, last_name, email"]
+    func getEmail(completion:(result:String) -> Void) {
+        let parameters = ["fields": "email"]
         var email : String = ""
         FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler {
         (connection, result, error) -> Void in
             if error != nil {
                 print(error)
             }
-            
-            /*if let email_temp = result["email"] as? String {
-                email = email_temp
-                print(email_temp)
-            }*/
-            //print(result)
+            email = result.valueForKey("email") as! String
+            completion(result:email)
         }
-        return email
-    }*/
+    }
     
-    
-    func getFirstName() -> String { //return\s the name of the current logged profile
+    //uses a completion handler to make sure it stores the name before continuing other actions
+    func getFullName(completion:(result:String) -> Void) { //returns the name of the current logged profile
         let parameters = ["fields": "first_name, last_name"]
-        var name : String = ""
+        var fullName : String = ""
+        var firstName : String = ""
+        var lastName : String = ""
         FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler {
             (connection, result, error) -> Void in
             if error != nil {
                 print(error)
             }
-            
-            if let firstName = result["first_name"] as? [String:AnyObject] {
-                print("First name is \(firstName)")
-                name = firstName["name"] as! String
-            }
+            firstName = result.valueForKey("first_name") as! String
+            lastName = result.valueForKey("last_name") as! String
+            fullName = "\(firstName) \(lastName)"
+            completion(result:fullName)
         }
-        //print("Full name is: \(name)")
-        return name
+    }
+    
+    func getFacebookID(completion:(result:String) -> Void) {
+        let parameters = ["fields": "id"]
+        var id : String!
+        FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler {
+            (connection, result, error) -> Void in
+            if error != nil {
+                print(error)
+            }
+            id = result.valueForKey("id") as! String
+            completion(result:id)
+        }
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
